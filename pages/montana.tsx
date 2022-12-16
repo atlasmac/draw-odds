@@ -16,7 +16,7 @@ function montana() {
 
 export default montana;
 
-export const getServerSideProps =async (context: {}) => {
+export const getServerSideProps = async (context: {}) => {
   const session = await getSession(context)
   if (!session){
     return {
