@@ -14,10 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      {!session ? <Hero/> : (<div>
-      <button className="btn btn-primary" onClick={() => signOut()}><span className="flex flex-row gap-x-1 items-center">Log out</span></button>
-        
-        </div>)}
+      {!session ? <Hero/> : (<div>View States</div>)}
     </div>
   );
 }
