@@ -22,7 +22,7 @@ function NavBar() {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <Image alt="logo" src='https://lh3.googleusercontent.com/a/AEdFTp4HcnDLOajtBl3Vgq9a23IhJbNO29QxeQGSJqeraw=s96-c' width={36} height={36}/>
+                <Image alt="logo" src={session?.user?.image || ''} width={36} height={36}/>
               </div>
             </label>
             <ul

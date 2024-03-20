@@ -2,10 +2,18 @@ import Head from "next/head";
 import Hero from "../components/Hero";
 import NavBar from "../components/NavBar";
 import States from "../components/States";
-import { useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { trpc } from "../utils/trpc";
 
 export default function Home() {
   const { data: session } = useSession();
+  const hello = trpc.hello.useQuery({ text: "client" });
+  // const userProfile = trpc.userProfile.useQuery()
+
+  if (!hello.data) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <Head>
@@ -14,7 +22,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      {!session ? <Hero/> : <States />}
+      {!session ? <Hero /> : (
+      <div>
+      <States />
+      <div>
+        <p>{hello.data.greeting}</p>
+        {/* <p>{userProfile.data.session}</p> */}
+      </div>
+      </div>
+      )}
     </div>
   );
 }
